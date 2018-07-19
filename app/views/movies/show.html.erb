@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="card card-lg">
+		<div class="card-header bg-primary">
+			<%= @movie.title %>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-12">
+					<% if @movie.user %>
+						<b>Estado: </b>Arrendada
+						<br>
+						<b>Nombre del arrentario: </b><%= @movie.user.name %>
+					<% else %>
+						<b>Estado: </b>Disponible
+						<br>
+						<%= link_to "Asignar usuario", edit_movie_user_path(@movie) %>
+					<% end %>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<p><b>Genero: </b><%= @movie.genre %></p>
+					<p><b>Duración: </b><%= @movie.duration.to_s + " min." %></p>
+					<p><b>Precio: </b><%= number_to_currency(@movie.price, delimiter:".", separator:",") %></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-auto mr-auto"></div>
+				<div class="col-auto">
+					<%= link_to "Editar", edit_movie_path(@movie) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

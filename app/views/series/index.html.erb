@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<h2>Series</h2>
+		</div>
+		<div class="col-md-10 new-link-position">
+			<%= link_to "Nuevo", new_serie_path %>
+		</div>
+	</div>
+	<div class="sub-container">
+		<% @series.each do |serie| %>
+			<div class="card card-sm">
+				<div class="card-header bg-primary">
+					<%= link_to serie.title + " (Temporada " + serie.season.to_s + ")", serie,
+						class: "card-header-link-text" %>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<p><b>Precio: </b><%= number_to_currency(serie.price, delimiter:".", separator:",") %></p>
+							<p><b>Estado: </b><%= serie.user ? "Arrendada" : "Disponible" %></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-auto mr-auto"></div>
+						<% if serie.user %>
+							<div class="col-auto">
+								<%= link_to "Devolver serie", destroy_serie_user_path(serie), method: :delete,
+									data: { confirm: "¿Está seguro que desea devolver este producto?" } %>
+							</div>
+						<% end %>
+						<div class="col-auto">
+							<%= link_to "Eliminar", serie, method: :delete,
+								data: { confirm: "¿Está seguro que desea eliminar esta serie?" } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

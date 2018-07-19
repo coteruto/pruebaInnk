@@ -1,0 +1,55 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<h2>Películas</h2>
+		</div>
+		<div class="col-md-2 new-link-position">
+			<%= link_to "Nuevo", new_movie_path %>
+		</div>
+		<div class="col-md-8 new-link-position">
+			<%= search_form_for @search do |f| %>
+				<div class="row">
+					<div class="col-md-10">
+						<%= f.text_field :title_cont, placeholder: "Comienza a escribir...",
+							class: "form-control" %>
+					</div>
+					<div class="col-md-2">
+						<%= f.submit "Buscar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<br>
+	<div class="sub-container">
+		<% @movies.each do |movie| %>
+			<div class="card card-sm">
+				<div class="card-header bg-primary">
+					<%= link_to movie.title, movie, class: "card-header-link-text" %>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<p><b>Precio: </b><%= number_to_currency(movie.price, delimiter:".", separator:",") %></p>
+							<p><b>Estado: </b><%= movie.user ? "Arrendada" : "Disponible" %></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-auto mr-auto"></div>
+						<% if movie.user %>
+							<div class="col-auto">
+								<%= link_to "Devolver película",
+									destroy_movie_user_path(movie), method: :put,
+									data: { confirm: "¿Está seguro que desea devolver este producto?" } %>
+							</div>
+						<% end %>
+						<div class="col-auto">
+							<%= link_to "Eliminar", movie, method: :delete,
+								data: { confirm: "¿Está seguro que desea eliminar esta película?" } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

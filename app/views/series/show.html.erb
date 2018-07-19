@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="card card-lg">
+		<div class="card-header bg-primary">
+			<%= @serie.title %>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-12">
+					<% if @serie.user %>
+						<b>Estado: </b>Arrendada
+						<br>
+						<b>Nombre del arrentario: </b><%= @serie.user.name %>
+					<% else %>
+						<b>Estado: </b>Disponible
+						<br>
+						<%= link_to "Asignar usuario", edit_serie_user_path(@serie) %>
+					<% end %>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<p><b>Genero: </b><%= @serie.genre %></p>
+					<p><b>Número de temporada: </b><%= @serie.season %></p>
+					<p><b>Precio: </b><%= number_to_currency(@serie.price, delimiter:".", separator:",") %></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-auto mr-auto"></div>
+				<div class="col-auto">
+					<%= link_to "Editar", edit_serie_path(@serie) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

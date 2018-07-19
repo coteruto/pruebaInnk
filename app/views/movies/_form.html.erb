@@ -1,0 +1,37 @@
+<div class="container">
+	<% card_title ||= "Formulario" %>
+	<div class="card card-sm">
+		<div class="card-header bg-primary">
+			<%= card_title %>
+		</div>
+		<div class="card-body">
+			<%= form_for(@movie) do |f| %>
+				<div class="form-group">
+					<label>Título</label>
+					<%= f.text_field :title, class: "form-control" %>
+					<% @movie.errors.full_messages_for(:title).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<label>Genero</label>
+					<%= f.text_field :genre, class: "form-control" %>
+					<% @movie.errors.full_messages_for(:genre).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<label>Precio</label>
+					<%= f.number_field :price, class: "form-control" %>
+					<% @movie.errors.full_messages_for(:price).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<label>Duración (min.)</label>
+					<%= f.number_field :duration, class: "form-control" %>
+					<% @movie.errors.full_messages_for(:duration).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<div class="btn-container">
+						<%= f.submit "Guardar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

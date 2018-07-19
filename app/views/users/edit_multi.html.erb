@@ -1,0 +1,34 @@
+<script >
+	$(document).ready( function(){
+		$( "#movie-dropdown" ).select2({
+		    theme: "bootstrap",
+		    multiple: true,
+		    placeholder: "Seleccione una película...",
+		    width: "100%",
+		    tags: true
+		});
+	});
+</script>
+<div class="container">
+	<div class="card card-sm">
+		<div class="card-header bg-primary">
+			Arrendar múltiples productos
+		</div>
+		<div class="card-body">
+			<%= form_for @user, url: update_multi_movie_path(@user) do |f| %>
+				<div class="form-group">
+					<label>Selecionar películas</label>
+					<%= select_tag :movie, options_from_collection_for_select(@movies, :id, :title),
+						multiple: true, include_blank: true, prompt: "seleccione una película...",
+						id: "movie-dropdown", class: "custom-select no-display" %>
+					<% @user.errors.full_messages_for(:name).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<div class="btn-container">
+						<%= f.submit "Guardar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

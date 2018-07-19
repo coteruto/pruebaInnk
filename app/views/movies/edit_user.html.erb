@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="card card-sm">
+		<div class="card-header bg-primary">
+			Arrendar Película
+		</div>
+		<div class="card-body">
+			<%= form_for @movie, url: {controller: :movies, action: :update} do |f| %>
+				<div class="form-group">
+					<label>Lista de usuarios</label>
+					<%= f.collection_select :user_id, @users.order(:name), :id, :name,
+						{ prompt: "Seleccione un usuario..." }, { class: "custom-select" } %>
+					<% @movie.errors.full_messages_for(:user_id).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<div class="btn-container">
+						<%= f.submit "Guardar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
