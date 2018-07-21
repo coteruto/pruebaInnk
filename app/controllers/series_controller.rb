@@ -45,13 +45,8 @@ class SeriesController < ApplicationController
 		 redirect_to series_path
 	end
 
-	def edit_user
+	def associate_user
 		@users = User.all
-	end
-
-	def destroy_user
-		user = @movie.user
-		user.movies.delete(@movie)
 	end
 
 	private
