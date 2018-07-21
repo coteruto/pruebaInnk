@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  title: MyString
+  genre: MyString
+  price: 9.99
+  season: 1
+
+two:
+  user_id: 
+  title: MyString
+  genre: MyString
+  price: 9.99
+  season: 1

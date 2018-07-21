@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VideoStoreApp</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= render "/partials/navigation" %>
+
+  <div class="<%= 'no-display' if notice.nil? && alert.nil? %>">
+	  <p class="notice"><%= notice %></p>
+	  <p class="alert"><%= alert %></p>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

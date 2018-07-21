@@ -1,0 +1,31 @@
+<script >
+	$(document).ready( function(){
+		$( "#series-dropdown" ).select2({
+		    theme: "bootstrap",
+		    multiple: true,
+		    placeholder: "Seleccione una serie...",
+		    width: "100%",
+		    tags: true
+		});
+	});
+</script>
+<div class="container">
+	<div class="card card-sm">
+		<div class="card-header bg-primary">
+			Arrendar múltiples productos
+		</div>
+		<div class="card-body">
+			<%= form_for @user, url: associate_series_path(@user) do |f| %>
+				<div class="form-group">
+					<label>Selecionar series</label>
+					<%= select_tag :serie, options_from_collection_for_select(@series, :id, :title),
+						multiple: true, include_blank: true, prompt: "seleccione una película...",
+						id: "series-dropdown", class: "custom-select no-display" %>
+					<div class="btn-container">
+						<%= f.submit "Guardar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

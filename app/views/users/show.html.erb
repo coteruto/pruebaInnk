@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="card card-lg">
+		<div class="card-header bg-primary">
+			<%= @user.name %>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-12">
+					<b>Correo electrónico: </b><%= @user.email %>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<p><b>Películas en arriendo:</b></p>
+					<% if @user.movies.empty? %>
+						<p>No hay películas en arriendo para este usuario</p>
+					<% else %>
+						<ul>
+							<% @user.movies.each do |movie| %>
+								<li><%= movie.title %></li>
+							<% end %>
+						</ul>
+					<% end %>
+					<p><b>Series en arriendo:</b></p>
+					<% if @user.series.empty? %>
+						<p>No hay series en arriendo para este usuario</p>
+					<% else %>
+						<ul>
+							<% @user.series.each do |serie| %>
+								<li><%= serie.title + " (Temporada " + serie.season.to_s + ")" %></li>
+							<% end %>
+						</ul>
+					<% end %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-auto mr-auto"></div>
+				<div class="col-auto">
+					<%= link_to "Editar", edit_user_path(@user) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

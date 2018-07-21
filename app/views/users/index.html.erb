@@ -1,0 +1,82 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<h2>Usuarios</h2>
+		</div>
+		<div class="col-md-2 new-link-position">
+			<%= link_to "Nuevo", new_user_path %>
+		</div>
+		<div class="col-md-8 new-link-position">
+			<%= search_form_for @search do |f| %>
+				<div class="row">
+					<div class="col-md-10">
+						<%= f.text_field :name_cont, placeholder: "Comienza a escribir...",
+							class: "form-control" %>
+					</div>
+					<div class="col-md-2">
+						<%= f.submit "Buscar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<br>
+	<div class="sub-container">
+		<% @users.each do |user| %>
+			<div class="card card-sm">
+				<div class="card-header bg-primary">
+					<%= link_to user.name + " (" + (user.email) + ")", user, class: "card-header-link-text" %>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-8">
+									<b>Películas en arriendo:</b>
+								</div>
+								<div class="col-md-4">
+									<%= user.movies.count %>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<b>Series en arriendo:</b>
+								</div>
+								<div class="col-md-4">
+									<%= user.series.count %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<% if Movie.get_available.empty? %>
+								<span>No hay peliculas para arrendar</span>
+							<% else %>
+								<%= link_to "Asignar múltiples películas", add_movies_association_path(user) %>
+							<% end %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<% if Serie.get_available.empty? %>
+								<span>No hay series para arrendar</span>
+							<% else %>
+								<%= link_to "Asignar múltiples series", add_series_association_path(user) %>
+							<% end %>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-auto mr-auto"></div>
+						<div class="col-auto">
+							<%= link_to "Eliminar", user, method: :delete,
+								data: { confirm: "¿Está seguro que desea eliminar este usuario" } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

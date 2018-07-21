@@ -1,0 +1,75 @@
+html,body{
+	margin: 0px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.nav-link{
+	color: rgba(255,255,255,0.7) !important;
+}
+
+.nav-link:hover{
+	color: white !important;
+}
+
+.navbar-collapse.show>#right-navbar-options{
+	border-top: 1px solid rgba(255,255,255,0.5);
+}
+
+.container{
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+	margin-top: 1em;
+}
+
+.sub-container{
+	width: 100%;
+	margin-left: 3.5em;
+}
+
+.card-sm{
+	width: 30%;
+	margin: 0 1em 1em 1em;
+	float: left;
+}
+
+.card-lg{
+	width: 40%;
+}
+
+.card-header{
+	text-align: center;
+	color: white;
+}
+
+.card-header-link-text{
+	text-decoration: none;
+	color: white;
+}
+
+.card-header-link-text:hover{
+	text-decoration: none;
+	color: rgba(255,255,255,0.8);
+}
+
+.new-link-position{
+	padding-top: 0.5em;
+}
+
+.form-group>.form-control{
+	margin-bottom: 1em;
+}
+
+.form-group>.btn-container{
+	margin-top: 1.2em;
+	width: 100%;
+	text-align: right;
+}
+
+.form-error-message{
+	color: red;
+	font-size: 0.9em;
+}
+
+.no-display{
+	display:none;
+}

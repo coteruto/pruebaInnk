@@ -1,0 +1,27 @@
+<div class="container">
+	<% card_title ||= "Formulario" %>
+	<div class="card card-sm">
+		<div class="card-header bg-primary">
+			<%= card_title %>
+		</div>
+		<div class="card-body">
+			<%= form_for(@user) do |f| %>
+				<div class="form-group">
+					<label>Nombre</label>
+					<%= f.text_field :name, class: "form-control" %>
+					<% @user.errors.full_messages_for(:name).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<label>Correo electrónico</label>
+					<%= f.email_field :email, class: "form-control" %>
+					<% @user.errors.full_messages_for(:email).each do |e| %>
+						<div class="form-error-message"><%= e %></div>
+					<% end %>
+					<div class="btn-container">
+						<%= f.submit "Guardar", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
